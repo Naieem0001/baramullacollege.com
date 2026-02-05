@@ -23,10 +23,18 @@
 
   const dots = dotsWrap.querySelectorAll(".campus-dot");
 
-  function update(){
-    track.style.transform = `translateX(-${index*100}%)`;
-    dots.forEach((d,i)=>d.classList.toggle("active", i===index));
-  }
+ let slideWidth = slides[0].getBoundingClientRect().width;
+
+function update(){
+  track.style.transform = `translateX(-${index * slideWidth}px)`;
+  dots.forEach((d,i)=>d.classList.toggle("active", i===index));
+}
+
+window.addEventListener("resize", () => {
+  slideWidth = slides[0].getBoundingClientRect().width;
+  update();
+});
+
 
   function goTo(i){
     index = (i + slides.length) % slides.length;
