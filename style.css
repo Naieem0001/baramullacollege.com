@@ -1483,6 +1483,139 @@ body.light-mode .disclaimer-text{
     height:12px;
   }
 }
+/* =====================================================
+   E-LIBRARY CARD SECTION
+===================================================== */
+
+.elib-section{
+  margin:40px 0 20px;
+}
+.section-heading {
+  font-size:22px;
+  margin-bottom:28px;
+  text-align:center;
+  color:#ffffff;
+}
+
+.elib-card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.elib-card{
+  background:linear-gradient(180deg,#0f172a,#020617);
+  border:1px solid var(--border-soft);
+  border-radius:18px;
+  padding:26px 22px;
+  text-align:center;
+  text-decoration:none;
+  color:inherit;
+  position:relative;
+
+  box-shadow:0 0 22px rgba(0,0,0,.35);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+
+.elib-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--accent-cyan);
+  box-shadow:
+    0 0 26px rgba(34,211,238,.25),
+    0 0 60px rgba(34,211,238,.08);
+}
+
+.elib-icon{
+  font-size:55px;
+  margin-bottom:14px;
+  filter:drop-shadow(0 0 10px rgba(34,211,238,.35));
+}
+
+.elib-card h3{
+  margin-bottom:15px;
+  font-size:20px;
+  color:#ffffff;
+}
+
+.elib-card p{
+  font-size:16px;
+  line-height:1.6;
+  color:var(--text-muted);
+  margin-bottom:18px;
+}
+
+.elib-cta{
+  display:inline-block;
+  font-weight:600;
+  font-size:14px;
+  color:var(--accent-cyan);
+  padding:8px 14px;
+  border-radius:10px;
+  border:1px solid rgba(34,211,238,.35);
+  transition:all .25s ease;
+}
+
+.elib-card:hover .elib-cta{
+  background:rgba(34,211,238,.08);
+  box-shadow:0 0 14px rgba(34,211,238,.4);
+}
+
+
+/* -------- Mobile refinement -------- */
+
+@media(max-width:600px){
+
+  .elib-section{
+    margin:28px 0 16px;
+  }
+
+  .elib-card{
+    padding:22px 18px;
+  }
+
+}
+/* =====================================================
+   E-LIBRARY CARD – LIGHT MODE FIX
+===================================================== */
+
+body.light-mode .elib-card{
+  background:#ffffff;
+  border:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 10px 24px rgba(0,0,0,0.06);
+}
+
+body.light-mode .elib-card h3{
+  color:#0f172a;
+}
+
+body.light-mode .elib-card p{
+  color:#475569;
+}
+
+body.light-mode .elib-icon{
+  filter:none;
+}
+
+body.light-mode .elib-cta{
+  color:#0369a1;
+  border-color:#93c5fd;
+}
+
+body.light-mode .elib-card:hover{
+  border-color:#38bdf8;
+  box-shadow:0 12px 26px rgba(2,132,199,0.15);
+}
+
+body.light-mode .elib-card:hover .elib-cta{
+  background:#e0f2fe;
+  box-shadow:none;
+}
+
+
 
 
 
