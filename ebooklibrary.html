@@ -256,10 +256,66 @@ header p{
 
 /* mobile */
 
-@media(max-width:520px){
+/*@media(max-width:520px){
   header h1{font-size:1.45rem;}
   .book-card img{height:210px;}
+}*/
+  /* ---------- Mobile fit without changing desktop layout ---------- */
+
+@media (max-width: 640px){
+
+  .container{
+    padding:16px 12px 50px;
+  }
+
+  header h1{
+    font-size:1.45rem;
+  }
+
+  header p{
+    font-size:.85rem;
+  }
+
+  .search-bar{
+    margin:14px auto 22px;
+  }
+
+  .search-bar input{
+    padding:12px 14px;
+    font-size:.9rem;
+  }
+
+  /* keep SAME grid behaviour, only safer width */
+  .book-grid{
+    grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    gap:14px;
+  }
+
+  /* reduce vertical size only */
+  .book-card img{
+    height:200px;
+  }
+
+  .book-body{
+    padding:10px 10px 12px;
+  }
+
+  .book-title{
+    font-size:.9rem;
+  }
+
+  .book-author{
+    font-size:.75rem;
+  }
+
+  /* better tap target */
+  .download-btn{
+    padding:10px 10px;
+    font-size:.8rem;
+  }
+
 }
+
 
 </style>
 </head>
@@ -298,8 +354,8 @@ const libraryData = [
       books:[
         {title:"Let Us C",author:"Yashavant Kanetkar",tag:"BCA",img:"letcimg.jpeg",file:"letusC.pdf"},
         {title:"Data Structures Using C",author:"Reema Thareja",tag:"BCA",img:"reema.jpg",file:"datastr.pdf"},
-        {title:"Web Development",author:"Ayush Mauryawanshi",tag:"BCA",img:"web dev.jfif",file:"web dev.jfif"},
-        {title:"Python Tutorial for Beginners",author:"Tutorial",tag:"BCA",img:"python.jfif",file:"python.pdf"}
+        {title:"Web Development",author:"Ayush Mauryawanshi",tag:"BCA",img:"web dev.jfif",file:"https://drive.google.com/file/d/13m8LWXBY-1dKNvjzgDQ5TIRyJtZqHwVS/view?usp=sharing"},
+        {title:"Python Tutorial for Beginners",author:"Tutorial",tag:"BCA",img:"python.jfif",file:"https://drive.google.com/file/d/14P3SwM0YVVzrI0Epe3vDnFx0Xa-Vw9Cw/view?usp=sharing"}
       ]
     },
     {
@@ -522,3 +578,4 @@ render(libraryData);
 
 </body>
 </html>
+
