@@ -80,6 +80,12 @@ if(navToggle && navMenu){
     navMenu.classList.toggle("active");
   });
 }
+  document.querySelector('.top-search').addEventListener('submit', e => {
+    const input = document.getElementById('searchInput');
+    if (!input.value.trim()) e.preventDefault();
+  });
+
+
 
 
 
