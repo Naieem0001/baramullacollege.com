@@ -81,6 +81,11 @@ if(navToggle && navMenu){
   });
 }
 
-
-
-
+// Search form validation (prevent empty submissions)
+const topSearch = document.querySelector('.top-search');
+if (topSearch) {
+  topSearch.addEventListener('submit', e => {
+    const input = document.getElementById('searchInput');
+    if (!input.value.trim()) e.preventDefault();
+  });
+}

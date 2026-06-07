@@ -15,6 +15,8 @@
 
   <!-- FAVICON -->
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- NEW STYLES (we will write later) -->
   <link rel="stylesheet" href="style.css">
@@ -40,17 +42,33 @@
       </li>
     </ul>
 
-    <form class="top-search" action="#" method="post">
-      <label for="searchInput">Search:</label>
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search Our Website..."
-      >
-      <button type="submit">
-        <img src="search.gif" alt="Search">
-      </button>
-    </form>
+    <form
+  class="top-search"
+  action="https://www.google.com/search"
+  method="get"
+  target="_blank"
+>
+  <input
+    type="hidden"
+    name="sitesearch"
+    value="baramullacollege.netlify.app"
+  >
+
+  <label for="searchInput">Search:</label>
+
+  <input
+    type="text"
+    id="searchInput"
+    name="q"
+    placeholder="Search our website…"
+    required
+  >
+
+  <button type="submit" aria-label="Search">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+</form>
+
 
   </div>
 </header>
@@ -106,7 +124,7 @@
           </li>
 
           <li>
-            <a href="about-college.html#vision" title="Vision & Mission">
+            <a href="about-college.html#vision" title="Vision &amp; Mission">
               Vision &amp; Mission
             </a>
           </li>
@@ -192,7 +210,7 @@
               <li><a href="https://www.baramullacollege.net/economicsdept.php">Department of Economics</a></li>
               <li><a href="https://www.baramullacollege.net/educationdept.php">Department of Education</a></li>
               <li><a href="https://www.baramullacollege.net/historydept.php">Department of History</a></li>
-              <li><a href="https://www.baramullacollege.net/mcmpdept.php">Department of MCMP & MCVP</a></li>
+              <li><a href="https://www.baramullacollege.net/mcmpdept.php">Department of MCMP &amp; MCVP</a></li>
               <li><a href="https://www.baramullacollege.net/polsciencedept.php">Department of Political Science</a></li>
               <li><a href="https://www.baramullacollege.net/psychologydept.php">Department of Psychology</a></li>
               <li><a href="https://www.baramullacollege.net/philosophydept.php">Department of Philosophy</a></li>
@@ -303,6 +321,7 @@
     </ul>
   </div>
 </nav>
+  <!-- Hero Image Section -->
 
  <section class="campus-slider" aria-label="Campus and Infrastructure Gallery">
   <div class="campus-slider-viewport">
@@ -346,6 +365,7 @@
 
   </div>
 </section>
+
 
 <!-- ================= MAIN WRAPPER ================= -->
 <main class="site-main">
@@ -529,7 +549,7 @@
           <h4>Datasheet for BG 3rd Semester</h4>
           <span class="notice-date">DATE : 2026-01-21</span>
           <p>
-            Date Sheet for BG 3rd Semester (Regular Batch-2024 &
+            Date Sheet for BG 3rd Semester (Regular Batch-2024 &amp;
             Backlog Batch 2022, 2023, Session Feb 2026)
           </p>
           <a
@@ -584,7 +604,7 @@
           <h4>APAAR ID Mismatch</h4>
           <span class="notice-date">DATE : 2026-01-03</span>
           <p>
-            Students of BG-1st semester Backlog (Batch 2022 & 2023),
+            Students of BG-1st semester Backlog (Batch 2022 &amp; 2023),
             examination held in Feb-March 2025,
             correction in APAAR details of the enlisted students.
           </p>
@@ -606,21 +626,21 @@
       </div>
 
     </section>
-    
-<!-- ================= E-LIBRARY & STUDY MATERIAL ================= -->
+
   </div>
 </main>
 
+<!-- ================= E-LIBRARY &amp; STUDY MATERIAL ================= -->
 <section class="elib-section">
 
-  <h2 class="section-heading">E-Library & Study Material</h2>
+  <h2 class="section-heading">E-Library &amp; Study Material</h2>
 
   <div class="elib-card-grid">
 
     <a href="ebooklibrary.html" class="elib-card">
       <div class="elib-icon">📚</div>
 
-      <h3>E-Library & Study Material</h3>
+      <h3>E-Library &amp; Study Material</h3>
 
       <p>
         Access curated e-books, reference material, notes and academic
@@ -634,7 +654,6 @@
   </div>
 
 </section>
-
 <!-- ================= ACADEMIC LINKS ================= -->
 <footer class="footer-top">
 
@@ -728,8 +747,6 @@
     </span>
   </marquee>
 </div>
-
-
 
 <!-- ================= NEW JS ================= -->
 <script src="script.js"></script>
