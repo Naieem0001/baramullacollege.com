@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Syllabus | Govt. Degree College Baramulla</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --bg:#0e162b;
+  --card:#111c38;
+  --card-soft:#16244a;
+  --accent:#38bdf8;
+  --text:#f8fafc;
+  --muted:#cbd5f5;
+  --radius:14px;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:system-ui,Segoe UI,Arial,sans-serif;
+  background:
+    radial-gradient(circle at top,#1b2a52,#0b1225);
+  color:var(--text);
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:28px 16px 60px;
+}
+
+h1{
+  text-align:center;
+  margin-bottom:6px;
+  color:#ffffff;
+}
+
+.page-subtitle{
+  text-align:center;
+  color:#c7d2fe;
+  margin-bottom:28px;
+  font-size:14px;
+}
+
+/* search bar */
+
+.search-box{
+  display:flex;
+  justify-content:center;
+  margin-bottom:26px;
+}
+
+.search-box input{
+  width:100%;
+  max-width:500px;
+  padding:13px 16px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.18);
+  background:#0b132a;
+  color:#fff;
+  outline:none;
+  font-size:14px;
+}
+
+.search-box input::placeholder{
+  color:#94a3b8;
+}
+
+.search-box input:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 14px rgba(56,189,248,.35);
+}
+
+/* semester card */
+
+.semester{
+  background:linear-gradient(180deg,var(--card),var(--card-soft));
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--radius);
+  margin-bottom:18px;
+  overflow:hidden;
+  box-shadow:0 12px 28px rgba(0,0,0,.35);
+}
+
+.sem-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 20px;
+  cursor:pointer;
+  background:rgba(255,255,255,.03);
+}
+
+.sem-header:hover{
+  background:rgba(56,189,248,.08);
+}
+
+.sem-header h2{
+  margin:0;
+  font-size:18px;
+  color:#ffffff;
+}
+
+.sem-header span{
+  color:var(--accent);
+  font-size:22px;
+  transition:.3s;
+}
+
+.semester.open .sem-header span{
+  transform:rotate(180deg);
+}
+
+/* subjects */
+
+.subjects{
+  display:none;
+  padding:16px 20px 22px;
+}
+
+.semester.open .subjects{
+  display:block;
+}
+
+.subjects ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:14px;
+}
+
+.subjects li{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.12);
+  padding:14px 14px;
+  border-radius:12px;
+  transition:.2s;
+}
+
+.subjects li:hover{
+  transform:translateY(-3px);
+  background:rgba(56,189,248,.10);
+  box-shadow:0 10px 22px rgba(56,189,248,.25);
+}
+
+.subjects a{
+  color:#e0f2fe;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:700;
+  display:block;
+}
+
+.subjects small{
+  color:#c7d2fe;
+  display:block;
+  margin-top:6px;
+  font-size:12px;
+}
+
+/* mobile */
+
+@media(max-width:600px){
+  h1{font-size:20px;}
+  .page-subtitle{font-size:13px;}
+  .sem-header h2{font-size:16px;}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Syllabus – Govt. Degree College Baramulla</h1>
+<div class="page-subtitle">
+NEP-2020 | Official syllabi for undergraduate & postgraduate programmes
+</div>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search subject (e.g. Physics, BCA, English...)">
+</div>
+
+<div id="syllabusRoot"></div>
+
+</div>
+
+
+<script>
+/*
+
+  
+*/
+
+const syllabusData = [
+
+{
+  semester: "1st Semester",
+  list: [
+
+    { name: "English", url: "https://www.baramullacollege.net/Syllabus1/EnglishLiterature_BEL22C101.pdf" },
+    { name: "Hindi (AEC)", url: "https://www.baramullacollege.net/Syllabus1/AEC_Hindi_1st_to_3rd_Sem.pdf" },
+    { name: "Urdu", url: "https://www.baramullacollege.net/Syllabus1/Ist_Sem_Urdu_Lit_Major_and_Minor.pdf" },
+    { name: "Arabic", url: "https://www.baramullacollege.net/Syllabus1/MajorArabic1stsem.pdf" },
+    { name: "Punjabi", url: "https://www.baramullacollege.net/Syllabus1/Punjabi_Core_Ist_1.pdf" },
+
+    { name: "Mathematics", url: "https://www.baramullacollege.net/Syllabus1/Major1stSemMathematics.pdf" },
+    { name: "Physics", url: "https://www.baramullacollege.net/Syllabus1/PHYSICSmd.pdf" },
+    { name: "Chemistry", url: "https://www.baramullacollege.net/Syllabus1/Chemistry-I_101.pdf" },
+    { name: "Botany", url: "https://www.baramullacollege.net/Syllabus1/BotanySem1MajorandMinor.pdf" },
+    { name: "Zoology", url: "https://www.baramullacollege.net/Syllabus1/Zoology_major-minor.pdf" },
+
+    { name: "Economics", url: "https://www.baramullacollege.net/Syllabus1/Economics_Majpr_Minor.pdf" },
+    { name: "History", url: "https://www.baramullacollege.net/Syllabus1/History_Majo_Minor.pdf" },
+    { name: "Political Science", url: "https://www.baramullacollege.net/Syllabus1/Major_Minor_Pol_Sc.pdf" },
+    { name: "Sociology", url: "https://www.baramullacollege.net/Syllabus1/Sociology_Major_Minor.pdf" },
+    { name: "Philosophy", url: "https://www.baramullacollege.net/Syllabus1/Philosophy_MajorMinor.pdf" },
+    { name: "Psychology", url: "https://www.baramullacollege.net/Syllabus1/FOUNDATIONSOFPSYCHOLOGY.pdf" },
+    { name: "Anthropology", url: "https://www.baramullacollege.net/Syllabus1/AnthropoloyMM.pdf" },
+    { name: "Public Administration", url: "https://www.baramullacollege.net/Syllabus1/Pub_Ad_Major_imor.pdf" },
+
+    { name: "Biotechnology", url: "https://www.baramullacollege.net/Syllabus1/Biotechnology1stsem.pdf" },
+    { name: "Food Science & Technology", url: "https://www.baramullacollege.net/Syllabus1/MajorFST.pdf" },
+    { name: "Industrial Fish & Fisheries", url: "https://www.baramullacollege.net/Syllabus1/Syllabussem1IFFMajorMinorGDCBaramulla.pdf" },
+
+    { name: "Environmental Science", url: "https://www.baramullacollege.net/Syllabus1/ES_MAJOR_MINOR.pdf" },
+
+    { name: "Information Technology", url: "https://www.baramullacollege.net/Syllabus1/IT_MD.pdf" },
+    { name: "Computer Applications (BCA)", url: "https://www.baramullacollege.net/Syllabus1/BCA_1st_and_2nd_Sem.pdf" },
+    { name: "Business Administration (BBA)", url: "https://www.baramullacollege.net/Syllabus1/1PrinciplesofManagement.pdf" },
+
+    { name: "Clinical Biochemistry", url: "https://www.baramullacollege.net/Syllabus1/CBCMajor1ST.pdf" },
+
+    { name: "Islamic Studies", url: "https://www.baramullacollege.net/Syllabus1/MDislamicstudies.pdf" },
+    { name: "Education", url: "https://www.baramullacollege.net/Syllabus1/FoundationofEducation_EducationCore.pdf" },
+    { name: "Music", url: "https://www.baramullacollege.net/Syllabus1/musicsyllabus.PDF" },
+    { name: "Statistics", url: "https://www.baramullacollege.net/Syllabus1/Statistics_1st MM.pdf" },
+    { name: "Electronics", url: "https://www.baramullacollege.net/Syllabus1/ELECTRONICS_MD.pdf" },
+
+    /* -------- AEC -------- */
+
+    { name: "English Communication Skills (AEC)", url: "https://www.baramullacollege.net/Syllabus1/EnglishCommunication Skills_AECC.pdf" },
+    { name: "Functional English (AEC)", url: "https://www.baramullacollege.net/Syllabus1/FunctionalEnglish_BEL22C102.pdf" },
+    { name: "AEC – Urdu", url: "https://www.baramullacollege.net/Syllabus1/AEC_Urdu_1st_to_3rd_Sem.pdf" },
+
+    /* -------- Multidisciplinary / MD -------- */
+
+    { name: "Multidisciplinary Mathematics (MD)", url: "https://www.baramullacollege.net/Syllabus1/Multidisciplinarymathematics.pdf" },
+    { name: "Multidisciplinary Course", url: "https://www.baramullacollege.net/Syllabus1/Multidisciplinary_Course.pdf" },
+    { name: "English – MDC", url: "https://www.baramullacollege.net/Syllabus1/English_MDC.pdf" },
+    { name: "Biotechnology – MDC", url: "https://www.baramullacollege.net/Syllabus1/BiotechnologyMultidiciplinary.pdf" },
+    { name: "Statistics – MDC", url: "https://www.baramullacollege.net/Syllabus1/Statistics_MultiD.pdf" },
+    { name: "Economics – MDC", url: "https://www.baramullacollege.net/Syllabus1/Introductory_Economics_MD.pdf" },
+    { name: "Sociology – MDC", url: "https://www.baramullacollege.net/Syllabus1/MD_Sociology.pdf" },
+    { name: "Arabic – MDC", url: "https://www.baramullacollege.net/Syllabus1/MDArabic.pdf" },
+    { name: "Urdu – MDC", url: "https://www.baramullacollege.net/Syllabus1/MD_Urdu.pdf" },
+
+    /* -------- Skill / SEC -------- */
+
+    { name: "IT Skill Course", url: "https://www.baramullacollege.net/Syllabus1/Skill_IT.pdf" },
+    { name: "Biotechnology Skill Course", url: "https://www.baramullacollege.net/Syllabus1/BiotechnologySkill1stsem.pdf" },
+    { name: "Electronics Skill Course", url: "https://www.baramullacollege.net/Syllabus1/Electronics_Skill.pdf" },
+    { name: "Economics Skill Course", url: "https://www.baramullacollege.net/Syllabus1/Economics_Skill.pdf" },
+    { name: "Music Skill Course", url: "https://www.baramullacollege.net/Syllabus1/MusicSkill.pdf" },
+    { name: "Media Skill Course", url: "https://www.baramullacollege.net/Syllabus1/Media_Skill_S103.pdf" },
+    { name: "Statistics Skill Course", url: "https://www.baramullacollege.net/Syllabus1/Statistics_SKILL.pdf" },
+    { name: "CBC – MLT Skill Course", url: "https://www.baramullacollege.net/Syllabus1/CBCSkillMLT.pdf" },
+    { name: "Zoology Skill Course", url: "https://www.baramullacollege.net/Syllabus1/SEC_zoology.pdf" },
+    { name: "Sociology Skill Course", url: "https://www.baramullacollege.net/Syllabus1/SEC_Sociology.pdf" },
+    { name: "Political Science Skill Course", url: "https://www.baramullacollege.net/Syllabus1/SEC_PolSc.pdf" },
+
+    /* -------- VAC -------- */
+
+    { name: "Understanding India (VAC)", url: "https://www.baramullacollege.net/Syllabus1/UND_INDIA_SYLLABUS.pdf" },
+    { name: "Psychological First Aid (VAC)", url: "https://www.baramullacollege.net/Syllabus1/PSYCHOLOGICALFIRSTAID_SEC.pdf" },
+    { name: "Early Childhood Care & Education (VAC)", url: "https://www.baramullacollege.net/Syllabus1/Early_ChildhoodCareAndEducation_SEC.pdf" }
+
+  ]
+},
+
+
+
+{
+  semester: "2nd Semester",
+  list: [
+
+    { name: "Hindi", url: "https://www.baramullacollege.net/Syllabus2/Hindi.pdf" },
+    { name: "Education", url: "https://www.baramullacollege.net/Syllabus2/Education.pdf" },
+    { name: "English", url: "https://www.baramullacollege.net/Syllabus2/English.pdf" },
+    { name: "Commerce (B.Com)", url: "https://www.baramullacollege.net/Syllabus2/commerce.pdf" },
+    { name: "Economics", url: "https://www.baramullacollege.net/Syllabus2/Economics.pdf" },
+    { name: "Zoology", url: "https://www.baramullacollege.net/Syllabus2/Zoology.pdf" },
+    { name: "Clinical Biochemistry (CBC)", url: "https://www.baramullacollege.net/Syllabus2/CBC.pdf" },
+    { name: "Veterinary Technology", url: "https://www.baramullacollege.net/Syllabus2/VETERINARY_TECHNOLOGY.pdf" },
+    { name: "Biotechnology", url: "https://www.baramullacollege.net/Syllabus2/Biotechnology.pdf" },
+    { name: "Botany", url: "https://www.baramullacollege.net/Syllabus2/Botany.pdf" },
+    { name: "Physics", url: "https://www.baramullacollege.net/Syllabus2/PHYSICS.pdf" },
+    { name: "Water Management", url: "https://www.baramullacollege.net/Syllabus2/Water_Management.pdf" },
+    { name: "Computer Applications (BCA)", url: "https://www.baramullacollege.net/Syllabus2/BCA_1st_and_2nd_Sem.pdf" },
+    { name: "Chemistry", url: "https://www.baramullacollege.net/Syllabus2/Chemistry.pdf" },
+    { name: "Industrial Fish & Fisheries (IFF)", url: "https://www.baramullacollege.net/Syllabus2/IFF.pdf" },
+    { name: "Sociology", url: "https://www.baramullacollege.net/Syllabus2/Sociology.pdf" },
+    { name: "Food Science & Technology (FST)", url: "https://www.baramullacollege.net/Syllabus2/FST.pdf" },
+    { name: "Public Administration", url: "https://www.baramullacollege.net/Syllabus2/PublicAdministration.pdf" },
+    { name: "Islamic Studies", url: "https://www.baramullacollege.net/Syllabus2/Islamic_Studies.pdf" },
+    { name: "Electronics", url: "https://www.baramullacollege.net/Syllabus2/Electronics.pdf" },
+    { name: "Arabic", url: "https://www.baramullacollege.net/Syllabus2/Arabic.pdf" },
+    { name: "Political Science", url: "https://www.baramullacollege.net/Syllabus2/political_Science.pdf" },
+    { name: "Environmental Science", url: "https://www.baramullacollege.net/Syllabus2/Env_Science.pdf" },
+    { name: "Indian Music", url: "https://www.baramullacollege.net/Syllabus2/Indian_Music.pdf" },
+    { name: "Statistics", url: "https://www.baramullacollege.net/Syllabus2/Statistics.pdf" },
+    { name: "Anthropology", url: "https://www.baramullacollege.net/Syllabus2/Anthropology.pdf" },
+    { name: "Business Administration (BBA)", url: "https://www.baramullacollege.net/Syllabus2/BusinessAdministration.pdf" },
+    { name: "Mathematics", url: "https://www.baramullacollege.net/Syllabus2/Mathematics.pdf" },
+    { name: "Mass Communication & Video Production (MCVP)", url: "https://www.baramullacollege.net/Syllabus2/MCVP.pdf" },
+    { name: "Social Work (SWK)", url: "https://www.baramullacollege.net/Syllabus2/SWK.pdf" },
+    { name: "Philosophy", url: "https://www.baramullacollege.net/Syllabus2/Philosophy.pdf" },
+    { name: "Information Technology (IT)", url: "https://www.baramullacollege.net/Syllabus2/IT.pdf" },
+    { name: "History", url: "https://www.baramullacollege.net/Syllabus2/History.pdf" },
+    { name: "Psychology", url: "https://www.baramullacollege.net/Syllabus2/Psychology.pdf" },
+    { name: "Urdu", url: "https://www.baramullacollege.net/Syllabus2/Urdu.pdf" },
+    { name: "Punjabi", url: "https://www.baramullacollege.net/Syllabus2/Punjabi.pdf" }
+
+  ]
+},
+
+
+{
+  semester: "3rd Semester",
+  list: [
+
+    /* ---------- AEC ---------- */
+    { 
+      name: "Punjabi – Ability Enhancement Course (AEC)", 
+      url: "https://www.baramullacollege.net/Syllabus3/PJL022_AEC.pdf" 
+    },
+
+    /* ---------- MAJOR SUBJECTS ---------- */
+    { name: "English", url: "https://www.baramullacollege.net/Syllabus3/English.pdf" },
+    { name: "Education", url: "https://www.baramullacollege.net/Syllabus3/Education.pdf" },
+    { name: "Environmental Science", url: "https://www.baramullacollege.net/Syllabus3/Environmental_Science.pdf" },
+    { name: "Economics", url: "https://www.baramullacollege.net/Syllabus3/Economics.pdf" },
+    { name: "Zoology", url: "https://www.baramullacollege.net/Syllabus3/Zoology.pdf" },
+    { name: "Biotechnology", url: "https://www.baramullacollege.net/Syllabus3/Biotechnology.pdf" },
+    { name: "Botany", url: "https://www.baramullacollege.net/Syllabus3/Botany.pdf" },
+    { name: "Food Science & Technology", url: "https://www.baramullacollege.net/Syllabus3/Food_Science_Technology.pdf" },
+    { name: "Water Management", url: "https://www.baramullacollege.net/Syllabus3/Water_Management.pdf" },
+    { name: "Chemistry", url: "https://www.baramullacollege.net/Syllabus3/Chemistry.pdf" },
+    { name: "Industrial Fish & Fisheries (IFF)", url: "https://www.baramullacollege.net/Syllabus3/IFF.pdf" },
+    { name: "Sociology", url: "https://www.baramullacollege.net/Syllabus3/Sociology.pdf" },
+    { name: "Physics", url: "https://www.baramullacollege.net/Syllabus3/Physics.pdf" },
+    { name: "Islamic Studies", url: "https://www.baramullacollege.net/Syllabus3/Islamic_Studies.pdf" },
+    { name: "Electronics", url: "https://www.baramullacollege.net/Syllabus3/Electronics.pdf" },
+    { name: "Political Science", url: "https://www.baramullacollege.net/Syllabus3/Poltical_Science.pdf" },
+    { name: "Music", url: "https://www.baramullacollege.net/Syllabus3/Music.pdf" },
+    { name: "Veterinary Technology", url: "https://www.baramullacollege.net/Syllabus3/Veterinary_Technology.pdf" },
+    { name: "Arabic", url: "https://www.baramullacollege.net/Syllabus3/Arabic.pdf" },
+    { name: "Public Administration", url: "https://www.baramullacollege.net/Syllabus3/Public_Administration.pdf" },
+    { name: "Statistics", url: "https://www.baramullacollege.net/Syllabus3/Statistics.pdf" },
+    { name: "Anthropology", url: "https://www.baramullacollege.net/Syllabus3/Anthropology.pdf" },
+    { name: "Information Studies", url: "https://www.baramullacollege.net/Syllabus3/Information_Studies.pdf" },
+    { name: "Mathematics", url: "https://www.baramullacollege.net/Syllabus3/Mathematics.pdf" },
+    { name: "Philosophy", url: "https://www.baramullacollege.net/Syllabus3/Philosophy.pdf" },
+    { name: "History", url: "https://www.baramullacollege.net/Syllabus3/History.pdf" },
+    { name: "Psychology", url: "https://www.baramullacollege.net/Syllabus3/Psychology.pdf" },
+    { name: "Social Work", url: "https://www.baramullacollege.net/Syllabus3/Social_Work.pdf" },
+    { name: "Urdu", url: "https://www.baramullacollege.net/Syllabus3/Urdu.pdf" },
+    { name: "Punjabi", url: "https://www.baramullacollege.net/Syllabus3/Punjabi.pdf" },
+    { name: "Commerce (B.Com)", url: "https://www.baramullacollege.net/Syllabus3/Commerce.pdf" },
+    { name: "Business Administration (BBA)", url: "https://www.baramullacollege.net/Syllabus3/Business_Administration.pdf" },
+    { name: "Computer Applications (BCA)", url: "2nd-year.pdf" },
+
+    /* ---------- BIOCHEMISTRY (CBC) ---------- */
+    { 
+      name: "Clinical Biochemistry – Major/Minor", 
+      url: "https://www.baramullacollege.net/Syllabus3/BCH324M.pdf" 
+    },
+    { 
+      name: "Clinical Biochemistry – Multidisciplinary (MD)", 
+      url: "https://www.baramullacollege.net/Syllabus3/BCH024I.pdf" 
+    },
+    { 
+      name: "Clinical Biochemistry – Skill Course", 
+      url: "https://www.baramullacollege.net/Syllabus3/BCH324S.pdf" 
+    },
+    { 
+      name: "Clinical Biochemistry (General)", 
+      url: "https://www.baramullacollege.net/Syllabus3/Clinical_Biochemistry.pdf" 
+    },
+
+    /* ---------- BIOINFORMATICS ---------- */
+    { 
+      name: "Bioinformatics – Minor", 
+      url: "https://www.baramullacollege.net/Syllabus3/BIM324N.pdf" 
+    },
+
+    /* ---------- MASS MEDIA ---------- */
+    { 
+      name: "Mass Communication & Video Production – Major", 
+      url: "https://www.baramullacollege.net/Syllabus3/MCVP.pdf" 
+    },
+    { 
+      name: "Mass Communication – Multidisciplinary (MD)", 
+      url: "https://www.baramullacollege.net/Syllabus3/MCM022I_MD.pdf" 
+    },
+
+
+
+  ]
+},
+
+
+{
+  semester: "4th Semester",
+  list: [
+
+    { name: "English", url: "https://www.baramullacollege.net/Syllabus4/English%20Literature.pdf" },
+    { name: "Education", url: "https://www.baramullacollege.net/Syllabus4/Education.pdf" },
+    { name: "Economics", url: "https://www.baramullacollege.net/Syllabus4/Economics.pdf" },
+    { name: "Commerce", url: "https://www.baramullacollege.net/Syllabus4/Commerce.pdf" },
+
+    { name: "Mathematics", url: "https://www.baramullacollege.net/Syllabus4/Mathematics.pdf" },
+    { name: "Physics", url: "https://www.baramullacollege.net/Syllabus4/Physics.pdf" },
+    { name: "Chemistry", url: "https://www.baramullacollege.net/Syllabus4/Chemistry.pdf" },
+    { name: "Statistics", url: "https://www.baramullacollege.net/Syllabus4/Statistics.pdf" },
+
+    { name: "Botany", url: "https://www.baramullacollege.net/Syllabus4/Botany.pdf" },
+    { name: "Zoology", url: "https://www.baramullacollege.net/Syllabus4/Zoology.pdf" },
+    { name: "Biotechnology", url: "https://www.baramullacollege.net/Syllabus4/Biotechnology.pdf" },
+    { name: "Food Science & Technology", url: "https://www.baramullacollege.net/Syllabus4/Food_Science_and_Technology.pdf" },
+
+    { name: "Industrial Fish & Fisheries", url: "https://www.baramullacollege.net/Syllabus4/Industrial_Fish_and_Fisheries.pdf" },
+    { name: "Water Management", url: "https://www.baramullacollege.net/Syllabus4/Water_management.pdf" },
+    { name: "Environmental Science", url: "https://www.baramullacollege.net/Syllabus4/Environmental_Science.pdf" },
+
+    { name: "Political Science", url: "https://www.baramullacollege.net/Syllabus4/Political_Science.pdf" },
+    { name: "Sociology", url: "https://www.baramullacollege.net/Syllabus4/Sociology.pdf" },
+    { name: "History", url: "https://www.baramullacollege.net/Syllabus4/History.pdf" },
+    { name: "Philosophy", url: "https://www.baramullacollege.net/Syllabus4/Philosophy.pdf" },
+    { name: "Psychology", url: "https://www.baramullacollege.net/Syllabus4/Psychology.pdf" },
+    { name: "Anthropology", url: "https://www.baramullacollege.net/Syllabus4/Anthropology.pdf" },
+    { name: "Public Administration", url: "https://www.baramullacollege.net/Syllabus4/Public_Administration.pdf" },
+    { name: "Social Work", url: "https://www.baramullacollege.net/Syllabus4/Social_work.pdf" },
+
+    { name: "Arabic", url: "https://www.baramullacollege.net/Syllabus4/Arabic.pdf" },
+    { name: "Urdu", url: "https://www.baramullacollege.net/Syllabus4/Urdu.pdf" },
+    { name: "Punjabi", url: "https://www.baramullacollege.net/Syllabus4/Punjabi.pdf" },
+    { name: "Islamic Studies", url: "https://www.baramullacollege.net/Syllabus4/Islamic_Studies.pdf" },
+
+    { name: "Indian Music", url: "https://www.baramullacollege.net/Syllabus4/Indian_Music.pdf" },
+
+    { name: "Electronics", url: "https://www.baramullacollege.net/Syllabus4/Electronics.pdf" },
+    { name: "Information Technology", url: "https://www.baramullacollege.net/Syllabus4/Information_Technology.pdf" },
+
+    { name: "Clinical Biochemistry", url: "https://www.baramullacollege.net/Syllabus4/Clinical_Biochemistry.pdf" },
+
+    { name: "Mass Communication & Video Production (MCVP / Mass Media)", url: "https://www.baramullacollege.net/Syllabus4/BMMMC_&_MCVP.pdf" },
+
+    { name: "Industrial Fisheries & Fishery Science (IFF)", url: "https://www.baramullacollege.net/Syllabus4/Industrial_Fish_and_Fisheries.pdf" },
+
+    { name: "Computer Applications (BCA)", url: "2nd-year.pdf" },
+
+    { name: "Business Administration (BBA)", url: "https://www.baramullacollege.net/Syllabus4/Business_Administration.pdf" }
+
+  ]
+},
+
+
+{
+  semester: "5th Semester",
+  list: [
+
+    { name: "English", url: "https://www.baramullacollege.net/Syllabus5/English.pdf" },
+    { name: "Hindi", url: "https://www.baramullacollege.net/Syllabus5/Hindi.pdf" },
+    { name: "Urdu", url: "https://www.baramullacollege.net/Syllabus5/Urdu.pdf" },
+    { name: "Arabic", url: "https://www.baramullacollege.net/Syllabus5/Arabic.pdf" },
+    { name: "Punjabi", url: "https://www.baramullacollege.net/Syllabus5/Punjabi.pdf" },
+
+    { name: "Education", url: "https://www.baramullacollege.net/Syllabus5/Education.pdf" },
+
+    { name: "Mathematics", url: "https://www.baramullacollege.net/Syllabus5/Mathematics.pdf" },
+    { name: "Physics", url: "https://www.baramullacollege.net/Syllabus5/Physics.pdf" },
+    { name: "Chemistry", url: "https://www.baramullacollege.net/Syllabus5/Chemistry.pdf" },
+    { name: "Statistics", url: "https://www.baramullacollege.net/Syllabus5/Statistics.pdf" },
+
+    { name: "Botany", url: "https://www.baramullacollege.net/Syllabus5/Botany.pdf" },
+    { name: "Zoology", url: "https://www.baramullacollege.net/Syllabus5/Zoology.pdf" },
+    { name: "Biotechnology", url: "https://www.baramullacollege.net/Syllabus5/Biotechnology.pdf" },
+    { name: "Food Science & Technology", url: "https://www.baramullacollege.net/Syllabus5/Food_Science_Technology.pdf" },
+
+    { name: "Water Management", url: "https://www.baramullacollege.net/Syllabus5/Water_Management.pdf" },
+    { name: "Environmental Science", url: "https://www.baramullacollege.net/Syllabus5/Environmental_Science.pdf" },
+
+    { name: "Economics", url: "https://www.baramullacollege.net/Syllabus5/Economics.pdf" },
+    { name: "Political Science", url: "https://www.baramullacollege.net/Syllabus5/Political_Science.pdf" },
+    { name: "Sociology", url: "https://www.baramullacollege.net/Syllabus5/Sociology.pdf" },
+    { name: "History", url: "https://www.baramullacollege.net/Syllabus5/History.pdf" },
+    { name: "Philosophy", url: "https://www.baramullacollege.net/Syllabus5/Philosophy.pdf" },
+    { name: "Psychology", url: "https://www.baramullacollege.net/Syllabus5/Psychology.pdf" },
+    { name: "Public Administration", url: "https://www.baramullacollege.net/Syllabus5/Public_Administration.pdf" },
+    { name: "Social Work", url: "https://www.baramullacollege.net/Syllabus5/Social_Work.pdf" },
+
+    { 
+      name: "Anthropology (Medical Anthropology)",
+      url: "https://www.baramullacollege.net/Syllabus5/ANT3522M_Medical_Anthropology.pdf"
+    },
+
+    { name: "Islamic Studies", url: "https://www.baramullacollege.net/Syllabus5/Islamic_Studies.pdf" },
+
+    { name: "Indian Music", url: "https://www.baramullacollege.net/Syllabus5/Indian_Music.pdf" },
+
+    { name: "Electronics", url: "https://www.baramullacollege.net/Syllabus5/Electronics.pdf" },
+    { name: "Information Technology", url: "https://www.baramullacollege.net/Syllabus5/Information_Technology.pdf" },
+
+    { name: "Industrial Fish & Fisheries (IFF)", url: "https://www.baramullacollege.net/Syllabus5/IFF.pdf" },
+
+    { name: "Mass Communication & Video Production (MCVP / Mass Media)", url: "https://www.baramullacollege.net/Syllabus5/MCVP.pdf" },
+
+    { name: "Business Administration (BBA)", url: "https://www.baramullacollege.net/Syllabus5/BBA.pdf" },
+
+    { name: "Computer Applications (BCA)", url: "https://www.baramullacollege.net/Syllabus5/BCA_5th_and_6th_Sem.pdf" }
+
+  ]
+},
+
+{
+  semester: "6th Semester",
+  list: [
+
+    { name: "Hindi", url: "https://www.baramullacollege.net/Syllabus6/Hindi.pdf" },
+    { name: "Education", url: "https://www.baramullacollege.net/Syllabus6/Education.pdf" },
+    { name: "Environmental Science", url: "https://www.baramullacollege.net/Syllabus6/Environmental_Science.pdf" },
+
+    { name: "Zoology", url: "https://www.baramullacollege.net/Syllabus6/Zoology.pdf" },
+    { name: "Biotechnology", url: "https://www.baramullacollege.net/Syllabus6/Biotechnology.pdf" },
+
+    { name: "Political Science", url: "https://www.baramullacollege.net/Syllabus6/Political_Science.pdf" },
+    { name: "Industrial Fish & Fisheries (IFF)", url: "https://www.baramullacollege.net/Syllabus6/IFF.pdf" },
+    { name: "Sociology", url: "https://www.baramullacollege.net/Syllabus6/Sociology.pdf" },
+
+    { name: "Physics", url: "https://www.baramullacollege.net/Syllabus6/Physics.pdf" },
+    { name: "Islamic Studies", url: "https://www.baramullacollege.net/Syllabus6/Islamic_Studies.pdf" },
+
+    { 
+      name: "Public Administration", 
+      url: "https://www.baramullacollege.net/Syllabus6/Public_Afministration.pdf" 
+    },
+
+    { name: "Music", url: "https://www.baramullacollege.net/Syllabus6/Music.pdf" },
+
+    { name: "Electronics", url: "https://www.baramullacollege.net/Syllabus6/Electronics_6th.pdf" },
+
+    { name: "Statistics", url: "https://www.baramullacollege.net/Syllabus6/Statistics.pdf" },
+    { name: "Anthropology", url: "https://www.baramullacollege.net/Syllabus6/Anthropology.pdf" },
+
+    { 
+      name: "Arabic", 
+      url: "https://www.baramullacollege.net/Syllabus6/Ararbic.pdf" 
+    },
+
+    { name: "Business Administration (BBA)", url: "https://www.baramullacollege.net/Syllabus6/BBA.pdf" },
+
+    { name: "Computer Applications (BCA)", url: "https://www.baramullacollege.net/Syllabus6/BCA_5th_and_6th_Sem.pdf" },
+
+    { name: "Philosophy", url: "https://www.baramullacollege.net/Syllabus6/Philosophy.pdf" },
+    { name: "History", url: "https://www.baramullacollege.net/Syllabus6/History.pdf" },
+    { name: "Psychology", url: "https://www.baramullacollege.net/Syllabus6/Psychology.pdf" },
+    { name: "Social Work", url: "https://www.baramullacollege.net/Syllabus6/Social_Work.pdf" },
+
+    { name: "Urdu", url: "https://www.baramullacollege.net/Syllabus6/Urdu.pdf" },
+
+    { name: "Mathematics", url: "https://www.baramullacollege.net/Syllabus6/mathematics.pdf" },
+
+    { name: "Punjabi", url: "https://www.baramullacollege.net/Syllabus6/Punjabi.pdf" },
+
+    { 
+      name: "Food Science & Technology", 
+      url: "https://www.baramullacollege.net/Syllabus6/Food_Science_technology.pdf" 
+    },
+
+    { 
+      name: "Information Technology", 
+      url: "https://www.baramullacollege.net/Syllabus6/Information%20Technology.pdf" 
+    }
+
+  ]
+}
+
+
+
+];
+
+
+/* render */
+
+const root = document.getElementById("syllabusRoot");
+
+function render(data){
+
+  root.innerHTML="";
+
+  data.forEach((block,i)=>{
+
+    const box=document.createElement("div");
+    box.className="semester";
+
+    box.innerHTML=`
+      <div class="sem-header">
+        <h2>${block.semester}</h2>
+        <span>⌄</span>
+      </div>
+      <div class="subjects">
+        <ul>
+          ${
+            block.list.map(s=>`
+              <li>
+                <a href="${s.url}" target="_blank">${s.name}</a>
+                <small>Download syllabus</small>
+              </li>
+            `).join("")
+          }
+        </ul>
+      </div>
+    `;
+
+    box.querySelector(".sem-header").onclick=()=>{
+      box.classList.toggle("open");
+    };
+
+    root.appendChild(box);
+
+  });
+
+}
+
+render(syllabusData);
+
+
+/* search */
+
+document.getElementById("searchInput").addEventListener("input",function(){
+
+  const q=this.value.toLowerCase().trim();
+
+  if(!q){
+    render(syllabusData);
+    return;
+  }
+
+  const filtered = syllabusData.map(s=>{
+    return{
+      semester:s.semester,
+      list:s.list.filter(x=>x.name.toLowerCase().includes(q))
+    };
+  }).filter(x=>x.list.length>0);
+
+  render(filtered);
+
+});
+</script>
+
+</body>
+</html>

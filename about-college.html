@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About the College – Govt. Degree College Baramulla</title>
+
+<style>
+:root{
+    --dark-bg:#0f1419;
+    --dark-card:#1a1f2e;
+    --accent-primary:#00d4ff;
+    --accent-secondary:#ff006e;
+    --accent-tertiary:#8338ec;
+    --text-primary:#ffffff;
+    --text-secondary:#b0b8c1;
+    --gradient-1:linear-gradient(135deg, #00d4ff, #0099cc);
+    --gradient-2:linear-gradient(135deg, #ff006e, #d6006e);
+    --gradient-3:linear-gradient(135deg, #8338ec, #5a189a);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family: "Segoe UI", "Inter", Arial, sans-serif;
+    background:#0f1419;
+    color:var(--text-primary);
+    overflow-x:hidden;
+}
+
+/* HERO */
+.page-header{
+    background:var(--dark-bg);
+    position:relative;
+    padding:120px 20px;
+    text-align:center;
+    overflow:hidden;
+}
+
+.page-header::before{
+    content:"";
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:radial-gradient(circle, rgba(0,212,255,.15) 1px, transparent 1px);
+    background-size:50px 50px;
+    animation:gridMove 20s linear infinite;
+    z-index:1;
+}
+
+.page-header::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:var(--gradient-1);
+    opacity:.08;
+    z-index:2;
+}
+
+@keyframes gridMove{
+    0%{transform:translate(0,0)}
+    100%{transform:translate(50px,50px)}
+}
+
+.page-header h1{
+    margin:0;
+    font-size:clamp(32px, 8vw, 56px);
+    font-weight:700;
+    letter-spacing:1px;
+    position:relative;
+    z-index:3;
+    background:var(--gradient-1);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    animation:fadeInDown .8s ease;
+}
+
+.page-header p{
+    max-width:700px;
+    margin:20px auto 0;
+    font-size:clamp(14px, 3vw, 18px);
+    color:var(--text-secondary);
+    position:relative;
+    z-index:3;
+    animation:fadeInUp .8s ease .2s both;
+}
+
+@keyframes fadeInDown{
+    from{
+        opacity:0;
+        transform:translateY(-30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeInUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* CONTAINER */
+.container{
+    max-width:1200px;
+    margin:0 auto;
+    padding:60px 20px;
+}
+
+/* SECTIONS */
+.section{
+    background:var(--dark-card);
+    padding:40px;
+    margin-bottom:40px;
+    border-radius:20px;
+    border:1px solid rgba(0,212,255,.1);
+    position:relative;
+    overflow:hidden;
+    animation:scaleIn .6s cubic-bezier(.34, 1.56, .64, 1) backwards;
+    backdrop-filter:blur(10px);
+    transition:all .4s ease;
+}
+
+.section:nth-child(1){animation-delay:.1s}
+.section:nth-child(2){animation-delay:.2s}
+.section:nth-child(3){animation-delay:.3s}
+.section:nth-child(4){animation-delay:.4s}
+.section:nth-child(5){animation-delay:.5s}
+.section:nth-child(6){animation-delay:.6s}
+.section:nth-child(7){animation-delay:.7s}
+.section:nth-child(8){animation-delay:.8s}
+.section:nth-child(9){animation-delay:.9s}
+
+.section:hover{
+    border-color:rgba(0,212,255,.3);
+    transform:translateY(-5px);
+    box-shadow:0 20px 60px rgba(0,212,255,.15);
+}
+
+@keyframes scaleIn{
+    from{
+        opacity:0;
+        transform:scale(.95) translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+.section::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:4px;
+    background:var(--gradient-1);
+    transition:.6s ease;
+}
+
+.section:hover::before{
+    left:0;
+}
+
+.section h2{
+    margin-top:0;
+    font-size:clamp(22px, 5vw, 32px);
+    color:var(--accent-primary);
+    padding-left:0;
+    border-left:none;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+/* TEXT */
+.section p{
+    line-height:1.8;
+    font-size:clamp(14px, 2vw, 16px);
+    color:var(--text-secondary);
+    margin:16px 0;
+}
+
+.section strong{
+    color:var(--accent-primary);
+    font-weight:600;
+}
+
+/* HIGHLIGHT */
+.highlight{
+    background:linear-gradient(135deg, rgba(0,212,255,.1), rgba(131,56,236,.1));
+    border-left:5px solid var(--accent-primary);
+    padding:24px;
+    border-radius:16px;
+    font-size:clamp(14px, 2vw, 16px);
+    line-height:1.8;
+    margin-bottom:24px;
+    border:1px solid rgba(0,212,255,.2);
+    backdrop-filter:blur(10px);
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:24px;
+    margin:24px 0;
+}
+
+.card{
+    background:linear-gradient(135deg, rgba(26,31,46,.8), rgba(10,10,15,.8));
+    border:1px solid rgba(0,212,255,.15);
+    border-radius:16px;
+    padding:24px;
+    font-size:15px;
+    transition:all .4s cubic-bezier(.34, 1.56, .64, 1);
+    position:relative;
+    overflow:hidden;
+    backdrop-filter:blur(10px);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:-50%;
+    right:-50%;
+    width:100%;
+    height:100%;
+    background:radial-gradient(circle, rgba(0,212,255,.1) 1px, transparent 1px);
+    background-size:30px 30px;
+    pointer-events:none;
+}
+
+.card:hover{
+    transform:translateY(-12px) scale(1.02);
+    border-color:rgba(0,212,255,.4);
+    box-shadow:0 25px 50px rgba(0,212,255,.2);
+}
+
+.card ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.card li{
+    margin:12px 0;
+    padding-left:24px;
+    position:relative;
+    color:var(--text-secondary);
+    line-height:1.6;
+}
+
+.card li::before{
+    content:"▸";
+    position:absolute;
+    left:0;
+    color:var(--accent-primary);
+    font-weight:bold;
+}
+
+/* BADGE */
+.badge{
+    display:inline-block;
+    background:var(--gradient-1);
+    color:#000;
+    padding:8px 16px;
+    border-radius:50px;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:16px;
+    letter-spacing:.5px;
+}
+
+/* LISTS */
+.section ul{
+    list-style:none;
+    padding:0;
+    margin:16px 0;
+}
+
+.section ul li{
+    margin:12px 0;
+    padding-left:24px;
+    position:relative;
+    line-height:1.7;
+    color:var(--text-secondary);
+}
+
+.section ul li::before{
+    content:"→";
+    position:absolute;
+    left:0;
+    color:var(--accent-primary);
+    font-weight:bold;
+}
+
+/* FOOTER NOTE */
+.footer-note{
+    text-align:center;
+    font-size:14px;
+    color:var(--text-secondary);
+    margin-top:80px;
+    padding-top:40px;
+    border-top:1px solid rgba(0,212,255,.1);
+}
+
+/* LINK BUTTON */
+a[target="_blank"]{
+    display:inline-block;
+    padding:14px 28px !important;
+    border-radius:50px !important;
+    background:var(--gradient-1) !important;
+    color:#000 !important;
+    font-weight:700 !important;
+    text-decoration:none !important;
+    box-shadow:0 12px 30px rgba(0,212,255,.3) !important;
+    transition:all .4s ease !important;
+    margin-top:20px;
+}
+
+a[target="_blank"]:hover{
+    transform:translateY(-3px);
+    box-shadow:0 18px 45px rgba(0,212,255,.5) !important;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .page-header{
+        padding:80px 20px;
+    }
+
+    .section{
+        padding:28px 20px;
+        margin-bottom:28px;
+    }
+
+    .container{
+        padding:40px 16px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .section h2{
+        font-size:24px;
+    }
+}
+
+@media(max-width:480px){
+    .page-header{
+        padding:60px 16px;
+    }
+
+    .page-header h1{
+        font-size:28px;
+    }
+
+    .section{
+        padding:20px 16px;
+        margin-bottom:20px;
+        border-radius:16px;
+    }
+
+    .section h2{
+        font-size:20px;
+    }
+
+    .container{
+        padding:30px 12px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="page-header">
+    <h1>Government Degree College, Baramulla</h1>
+    <p>
+        A historic centre of learning, social transformation and intellectual leadership in North Kashmir
+    </p>
+</div>
+
+<div class="container">
+
+<!-- ABOUT -->
+<div class="section">
+<h2>About the College</h2>
+
+<div class="highlight">
+Government Degree College Baramulla is one of the oldest and most prestigious institutions of higher
+education in the region of North Kashmir. The college has continuously served as a powerful
+instrument of academic enlightenment, social harmony and human development.
+</div>
+
+<p>
+Today, the college functions as an <strong>autonomous institution</strong> and is steered by
+<strong>Prof. Mohd Shafi Lone</strong> as its Principal. The institution stands committed to quality
+education, innovation, inclusiveness and responsible citizenship.
+</p>
+
+<p>
+The college represents not merely a campus of classrooms and laboratories, but a vibrant ecosystem
+of ideas, values, creativity and social responsibility that shapes the intellectual destiny of Baramulla
+and its surrounding regions.
+</p>
+</div>
+
+<!-- ESTABLISHMENT & HISTORY -->
+<div class="section">
+<h2>Establishment and Historical Evolution</h2>
+
+<p>
+The roots of Government Degree College Baramulla go back to the late 19<sup>th</sup> century when
+systematic educational efforts were initiated in the region through missionary and social initiatives.
+The earliest organised learning centre was established in Baramulla to cater to the educational needs
+of local children, particularly the underprivileged.
+</p>
+
+<p>
+A primary school building was completed in the early twentieth century and formally inaugurated
+in 1909. The institution gradually evolved into a high school in 1913.
+</p>
+
+<p>
+In 1938, the institution was upgraded to an Intermediate College and eventually attained the status of a
+Degree College in the year <strong>1943</strong>.
+</p>
+
+<p>
+During the disturbances of 1947, academic activities were temporarily suspended. The college was
+subsequently reopened on <strong>28 June 1954</strong>, marking a renewed commitment to higher education in
+the region.
+</p>
+
+<p>
+The present campus at <strong>Khwajabagh</strong> was formally inaugurated on <strong>20 November 1964</strong>.
+Since then, the institution has grown into a major academic landmark of North Kashmir.
+</p>
+</div>
+
+<!-- VISION & MISSION -->
+<div class="section" id="vision">
+<h2>Vision and Mission</h2>
+
+<p><strong>Vision</strong></p>
+<p>
+To emerge as a centre of academic excellence by nurturing critical thinking, innovation, ethical values,
+social responsibility and lifelong learning.
+</p>
+
+<p><strong>Mission</strong></p>
+<ul>
+<li>To deliver quality education through dynamic and learner-centred academic practices.</li>
+<li>To promote research culture, creativity and professional competence.</li>
+<li>To encourage social engagement, leadership and civic responsibility.</li>
+<li>To foster inclusive learning and equal educational opportunities.</li>
+</ul>
+</div>
+
+<!-- ACADEMIC PROGRAMMES -->
+<div class="section" id="courses">
+<h2>Academic Programmes Offered</h2>
+
+<div class="grid">
+
+<div class="card">
+<span class="badge">Undergraduate</span>
+<ul>
+<li>B.A (All subjects available as Major and Minor)</li>
+<li>B.Sc (All science subjects as Major and Minor)</li>
+<li>BCA – Bachelor of Computer Science</li>
+<li>BBA – Bachelor of Business Administration</li>
+<li>B.Com – Bachelor of Commerce</li>
+<li>BAMMC- Bachelor of Arts in Media and Mass Communication </li>
+</ul>
+</div>
+
+<div class="card">
+<span class="badge">Postgraduate</span>
+<ul>
+<li>M.Sc. Mathematics</li>
+<li>M.Sc. Computer Science</li>
+<li>M.A. Psychology</li>
+</ul>
+</div>
+
+</div>
+
+<p>
+The autonomous academic framework allows the college to design and continuously update its
+curricula in line with emerging academic trends, industry requirements and societal needs.
+</p>
+</div>
+
+<!-- CO-CURRICULAR -->
+<div class="section" id="activities">
+<h2>Co-Curricular and Student Development Activities</h2>
+
+<p>
+The college places strong emphasis on holistic development beyond formal academics. Students are
+actively encouraged to participate in diverse co-curricular and enrichment activities.
+</p>
+
+<ul>
+<li>National Service Scheme (NSS)</li>
+<li>National Cadet Corps (NCC)</li>
+<li>Literary, debate and cultural societies</li>
+<li>Seminars, workshops and public lectures</li>
+<li>Career guidance and skill-development programmes</li>
+<li>Media and creative communication activities</li>
+<li>Community outreach and social service initiatives</li>
+</ul>
+</div>
+
+<!-- SPORTS -->
+<div class="section">
+<h2>Sports and Physical Education Facilities</h2>
+
+<p>
+Both indoor and outdoor sports facilities are available to promote physical fitness, teamwork and
+competitive spirit among students.
+</p>
+
+<ul>
+<li>Large outdoor playgrounds and sports fields</li>
+<li>Indoor sports facilities</li>
+<li>Annual sports events and inter-college tournaments</li>
+<li>Physical education and fitness activities</li>
+</ul>
+</div>
+
+<!-- CAMPUS CULTURE -->
+<div class="section">
+<h2>Campus Culture and Student Experience</h2>
+
+<p>
+The campus environment is widely recognised for its academic seriousness combined with a healthy,
+liberal and inclusive atmosphere. Regular student feedback mechanisms ensure that learners remain
+central stakeholders in institutional governance.
+</p>
+
+<p>
+The college strongly discourages outdated authoritarian practices and actively promotes constitutional
+values, freedom of expression and responsible citizenship.
+</p>
+
+<p>
+Students experience a culturally rich environment shaped by multi-ethnic coexistence, social harmony
+and intellectual openness.
+</p>
+</div>
+
+<!-- MEDIA & INNOVATION -->
+<div class="section">
+<h2>Media, Innovation and Digital Learning</h2>
+
+<p>
+Government Degree College Baramulla was among the earliest multidisciplinary institutions in the
+region to introduce media training and computer application facilities at the undergraduate level.
+</p>
+
+<p>
+The college maintains digital learning infrastructure, media laboratories and virtual learning
+facilities that support practical training, outreach programmes, film screenings and academic
+production projects.
+</p>
+</div>
+
+<!-- RUMI LIBRARY -->
+<div class="section" id="library">
+<h2>Rumi Library – Knowledge and Learning Hub</h2>
+
+<div class="highlight">
+Rumi Library is the largest academic library in North Kashmir and serves as a central learning
+resource for students, teachers and researchers of Government Degree College Baramulla.
+</div>
+
+<p>
+The library houses a vast and continuously expanding collection of books, reference materials,
+journals, magazines and daily newspapers. It supports both academic and general reading needs
+of learners across all disciplines offered by the college.
+</p>
+
+<p>
+Rumi Library maintains an inclusive and learner-friendly environment that encourages independent
+study, intellectual curiosity and research-oriented learning among students.
+</p>
+
+<p>
+The collection includes a wide range of materials covering:
+</p>
+
+<ul>
+    <li>Core academic and subject reference books for all major disciplines</li>
+    <li>Competitive examination and career guidance material</li>
+    <li>Fiction and non-fiction literature across diverse genres</li>
+    <li>National and regional newspapers through daily subscriptions</li>
+    <li>Popular and academic magazines supporting current affairs and general awareness</li>
+</ul>
+
+<p>
+With its rich resources and accessible learning atmosphere, Rumi Library plays a vital role in
+promoting reading culture, research orientation and lifelong learning among the student community.
+</p>
+<p style="margin-top:18px;">
+    <a href="https://chat.whatsapp.com/BrGHcS4DiFcFQYUofULBqe"
+       target="_blank">
+        📲 Join Rumi Library – Official WhatsApp Group
+    </a>
+</p>
+
+</div>
+
+<!-- COMMUNITY -->
+<div class="section">
+<h2>Community Engagement and Social Responsibility</h2>
+
+<p>
+The institution plays an active role in community development through awareness programmes,
+health initiatives, environmental campaigns and social welfare activities coordinated by student
+volunteers and academic departments.
+</p>
+
+<p>
+The college has consistently contributed to the social fabric of Baramulla by nurturing responsible,
+ethically grounded and socially sensitive citizens.
+</p>
+</div>
+
+<!-- LEGACY -->
+<div class="section" id="best-practices">
+<h2>Legacy and Institutional Impact</h2>
+
+<p>
+For over a century, Government Degree College Baramulla has remained a powerful engine of social
+mobility and intellectual empowerment. The classrooms of this institution have shaped generations of
+administrators, professionals, scholars, educators, writers, scientists, engineers and public servants.
+</p>
+
+<p>
+The college has had a transformative influence on the literacy rate, inter-community harmony and
+socio-cultural development of the region.
+</p>
+
+<p>
+Its enduring legacy lies in the character it builds, the values it transmits and the social conscience it
+awakens among its learners.
+</p>
+</div>
+
+<!-- TRANSPARENCY & CHALLENGES -->
+<div class="section">
+<h2>Institutional Transparency and Continuous Improvement</h2>
+
+<p>
+The college believes in self-assessment, openness to constructive criticism and participatory
+governance. Infrastructure constraints, expansion challenges and administrative limitations are
+acknowledged transparently and addressed through institutional planning and coordination with
+public authorities.
+</p>
+
+<p>
+The autonomous framework further strengthens academic governance and quality assurance
+mechanisms to ensure sustainable institutional growth.
+</p>
+</div>
+
+<div class="footer-note">
+© Government Degree College Baramulla – About the Institution
+</div>
+
+</div>
+
+</body>
+</html>

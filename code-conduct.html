@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Code of Conduct | Govt. Degree College Baramulla</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+/* ---------- Animated Background ---------- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: bgShift 8s ease-in-out infinite;
+}
+
+@keyframes bgShift {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* ---------- Hero Header ---------- */
+.hero {
+    padding: 120px 20px 80px;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(135deg, #8a2be2 0%, #00ff88 50%, #ff006e 100%);
+    background-size: 300% 300%;
+    position: relative;
+    overflow: hidden;
+    animation: gradientShift 8s ease infinite;
+    z-index: 1;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: -20%;
+    left: 10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.15), transparent);
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(30px); }
+}
+
+.hero h1 {
+    font-size: 56px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideInDown 0.8s ease;
+}
+
+.hero p {
+    max-width: 850px;
+    margin: 0 auto;
+    font-size: 18px;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+    line-height: 1.6;
+    animation: slideInUp 0.8s ease 0.2s both;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Main Container ---------- */
+.wrapper {
+    max-width: 1200px;
+    margin: -40px auto 60px;
+    padding: 50px;
+    background: rgba(30, 27, 60, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(138, 43, 226, 0.2), 0 0 40px rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    animation: slideUp 0.8s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeIn 0.8s ease 0.3s both;
+}
+
+.intro h2 {
+    font-size: 40px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #8a2be2, #00ff88, #ff006e);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+    margin-bottom: 15px;
+}
+
+.intro p {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #b0b0b0;
+    line-height: 1.8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ---------- Cards ---------- */
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    margin-bottom: 40px;
+}
+
+.rule-card {
+    background: linear-gradient(135deg, rgba(50, 43, 99, 0.8), rgba(30, 27, 60, 0.9));
+    border-radius: 18px;
+    padding: 30px;
+    border: 2px solid rgba(138, 43, 226, 0.4);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.rule-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #8a2be2, #00ff88, #ff006e);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.rule-card::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.15), transparent);
+    border-radius: 50%;
+    transition: all 0.6s ease;
+}
+
+.rule-card:hover {
+    transform: translateY(-16px) scale(1.03);
+    box-shadow: 0 30px 60px rgba(138, 43, 226, 0.3), 0 0 30px rgba(0, 255, 136, 0.2);
+    border-color: #00ff88;
+    background: linear-gradient(135deg, rgba(70, 50, 120, 0.9), rgba(40, 35, 75, 0.95));
+}
+
+.rule-card:hover::after {
+    top: -20%;
+    right: -10%;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.25), transparent);
+}
+
+.rule-card h3 {
+    margin: 0 0 18px 0;
+    color: #00ff88;
+    font-size: 24px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rule-card ul {
+    margin: 0;
+    padding-left: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.rule-card li {
+    margin-bottom: 12px;
+    line-height: 1.8;
+    color: #d0d0d0;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.rule-card:hover li {
+    color: #e0e0e0;
+}
+
+.rule-card strong {
+    color: #ff006e;
+    font-weight: 700;
+}
+
+/* ---------- Important Notice ---------- */
+.notice-box {
+    margin-top: 50px;
+    padding: 40px 45px;
+    border-radius: 20px;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.4), rgba(255, 0, 110, 0.3));
+    box-shadow: 0 25px 60px rgba(255, 0, 110, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    font-size: 16px;
+    line-height: 1.9;
+    border: 2px solid rgba(255, 0, 110, 0.5);
+    border-left: 6px solid #00ff88;
+    animation: slideUp 1s ease 0.4s both;
+    backdrop-filter: blur(10px);
+}
+
+.notice-box strong {
+    font-weight: 700;
+    color: #00ff88;
+}
+
+/* ---------- Footer strip ---------- */
+.footer-strip {
+    margin-top: 50px;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    border-top: 1px solid rgba(138, 43, 226, 0.3);
+    animation: fadeIn 1s ease 0.5s both;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 80px 20px 60px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .wrapper {
+        margin: -30px auto 40px;
+        padding: 30px 20px;
+    }
+
+    .intro h2 {
+        font-size: 32px;
+    }
+
+    .rules-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .notice-box {
+        padding: 30px 20px;
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <h1>College Code of Conduct</h1>
+    <p>
+        Government Degree College Baramulla (Autonomous) is committed to maintaining
+        a disciplined, respectful and academically vibrant campus environment for
+        all its students.
+    </p>
+</div>
+
+<div class="wrapper">
+
+    <div class="intro">
+        <h2>General Code of Conduct for Students</h2>
+        <p>
+            This Code of Conduct aims to ensure academic integrity, personal discipline,
+            safety and mutual respect within the college campus. All students are
+            expected to strictly follow the guidelines mentioned below.
+        </p>
+    </div>
+
+    <div class="rules-grid">
+
+        <div class="rule-card">
+            <h3>👔 Uniform & Dress Code</h3>
+            <ul>
+                <li><strong>Boys:</strong> White T-shirt, black trousers and college tie.</li>
+                <li><strong>Girls:</strong> White frock with shalwar, black abaya and dupatta.</li>
+                <li>Students must maintain a neat, modest and decent appearance.</li>
+            </ul>
+        </div>
+
+        <div class="rule-card">
+            <h3>📚 Attendance Requirement</h3>
+            <ul>
+                <li>Minimum <strong>75% attendance</strong> is mandatory in each subject.</li>
+                <li>Students falling short of attendance may be barred from examinations.</li>
+            </ul>
+        </div>
+
+        <div class="rule-card">
+            <h3>🎫 Campus Entry & Identity</h3>
+            <ul>
+                <li>Only bonafide students of the college are allowed inside the campus.</li>
+                <li>No outsider or unauthorised person is permitted.</li>
+                <li>College identity card must be carried at all times.</li>
+            </ul>
+        </div>
+
+        <div class="rule-card">
+            <h3>🤝 Discipline & Moral Behaviour</h3>
+            <ul>
+                <li>Respectful conduct towards teachers, staff and fellow students is compulsory.</li>
+                <li>Any form of harassment, misconduct or violence will invite strict action.</li>
+                <li>The college promotes ethical behaviour and social responsibility.</li>
+            </ul>
+        </div>
+
+        <div class="rule-card">
+            <h3>🚭 Prohibition of Smoking & Substances</h3>
+            <ul>
+                <li>Smoking, alcohol and any intoxicating substances are strictly prohibited.</li>
+                <li>Violations will lead to disciplinary and legal action.</li>
+            </ul>
+        </div>
+
+        <div class="rule-card">
+            <h3>🏛️ College Decorum & Property</h3>
+            <ul>
+                <li>Students must maintain cleanliness and campus discipline.</li>
+                <li>Damage to college property, furniture or equipment is punishable.</li>
+                <li>Common facilities must be used responsibly.</li>
+            </ul>
+        </div>
+
+        <div class="rule-card">
+            <h3>📱 Use of Mobile Phones & Devices</h3>
+            <ul>
+                <li>Mobile phones must be used only for academic or emergency purposes.</li>
+                <li>Use of devices during lectures without permission is discouraged.</li>
+            </ul>
+        </div>
+
+        <div class="rule-card">
+            <h3>✍️ Academic Integrity</h3>
+            <ul>
+                <li>Cheating, plagiarism and unfair practices are strictly prohibited.</li>
+                <li>Students must follow honesty in examinations, projects and assignments.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="notice-box">
+        ⚠️ <strong>Important Notice:</strong> The college reserves the right to initiate appropriate disciplinary action against any
+        student found violating the above rules. The objective of this Code of Conduct is to
+        create a safe, inclusive, disciplined and academically productive environment at
+        Government Degree College Baramulla (Autonomous).
+    </div>
+
+    <div class="footer-strip">
+        © Government Degree College Baramulla (Autonomous)
+    </div>
+
+</div>
+
+</body>
+</html>
